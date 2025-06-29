@@ -1,6 +1,6 @@
 // Find scond highest Number
 
-let arr = [34, 23, 45, 57, 51, 56, 23, 24, 35, 46]
+let arr = [34, 23, 45, 57, 60, 60, 60, 60]
 
 
 function secondHighest(arr) {
@@ -19,13 +19,13 @@ function secondHighest(arr) {
         if (arr[i] > max) {
             secondMax = max;
             max = arr[i]
-        } else if (arr[i] > secondMax) {
+        } else if (arr[i] > secondMax && max != arr[i]) {
             secondMax = arr[i];
         }
     }
-    console.log(max)
+    console.log("Max : ", max);
 
-    console.log(secondMax)
+    console.log("Second Max : ", secondMax)
 
 }
 
