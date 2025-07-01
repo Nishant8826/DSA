@@ -1,18 +1,8 @@
-// Find scond highest Number
-
-let arr = [34, 23, 45, 57, 60, 60, 60, 60]
-
+// Find scond highest/minimum Number
 
 function secondHighest(arr) {
-    let max;
-    let secondMax;
-    if (arr[0] > arr[1]) {
-        max = arr[0];
-        secondMax = arr[1];
-    } else {
-        max = arr[1];
-        secondMax = arr[0];
-    }
+    let max = Math.max(arr[0], arr[1]);
+    let secondMax = Math.min(arr[0], arr[1])
 
     for (let i = 2; i < arr.length; i++) {
 
@@ -30,4 +20,25 @@ function secondHighest(arr) {
 }
 
 
-secondHighest(arr)
+
+function secondMinimum(arr) {
+    let min = Math.min(arr[0], arr[1]);
+    let secondMin = Math.max(arr[0], arr[1]);
+
+    for (let i = 2; i < arr.length; i++) {
+        if (arr[i] < min) {
+            secondMin = min;
+            min = arr[i];
+        }else if(arr[i]<secondMin){
+            secondMin = arr[i]
+        }
+    }
+
+    console.log('Min : ', min);
+    console.log('Second Min : ', secondMin);
+}
+
+let arr = [34, 23, 30, 57, 6, 10, 40, 60]
+
+// secondHighest(arr)
+secondMinimum(arr);
