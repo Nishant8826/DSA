@@ -42,6 +42,8 @@ function shift(arr, k) {
 
 }
 
+
+
 function reverse(arr, i, j) {
     for (let k = i; k < j; k++) {
         let temp = arr[k];

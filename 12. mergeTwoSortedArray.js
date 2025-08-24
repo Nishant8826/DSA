@@ -1,9 +1,9 @@
 // Merge 2 sorted arrays
 
-let arr1 = [1, 3, 5, 6];
+let arr1 = [1, 2, 3];
 //                                  i
 
-let arr2 = [2, 4, 7];
+let arr2 = [2, 5, 6];
 //                   j
 
 function merge(arr1, arr2) {
