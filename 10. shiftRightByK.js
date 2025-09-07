@@ -1,56 +1,58 @@
-/****
- *  [ 1 , 2 , 3 , 4 , 5 ] ,  k =2
- *   [1,2,3,5,4]  -> reverse 
- * [3,2,1,5,4]
- * [4,5,1,2,3]                 
- * 
- * 
- *  
- *  [4,5,1,2,3] 
- */
 
-function shift(arr, k) {
-    // k = k % arr.length;
+// [ 1 , 2 , 3 , 4 , 5 , 6 , 7 ]
+//   
+// 
+// 
+// k = 3
+// len = 7 
+
+var rotate = function (nums, k) {
+    // k = k % nums.length
     // for (let j = 0; j < k; j++) {
-    //     let temp = arr[arr.length - 1];
-    //     for (let i = arr.length - 1; i > 0; i--) {
-    //         arr[i] = arr[i - 1]
+    //     let temp = nums[nums.length - 1];
+    //     for (let i = nums.length - 1; i > 0; i--) {
+    //         nums[i] = nums[i - 1];
     //     }
-    //     arr[0] = temp
+    //     nums[0] = temp;
     // }
-    // console.log(arr)
-    //  --------- Time is N2 --------------------------
+    // return nums
 
 
-    let len = arr.length;
-    k = k % len;
-    let j = arr.length - k - 1;
-    let i = 0;
-    reverse(arr, i, j)
-
-
-    j = arr.length - 1;
-    i = arr.length - k
-    reverse(arr, i, j)
-
+    k = k % nums.length;
+    let i = nums.length - k;
+    let j = nums.length - 1;
+    while (i < j) {
+        let temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+        i++;
+        j--;
+    }
 
     i = 0;
-    reverse(arr, i, j)
-
-
-    console.log(arr)
-
-}
-
-
-
-function reverse(arr, i, j) {
-    for (let k = i; k < j; k++) {
-        let temp = arr[k];
-        arr[k] = arr[j];
-        arr[j] = temp
-        j--
+    j = nums.length - k - 1;
+    while (i < j) {
+        let temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+        i++;
+        j--;
     }
-}
 
-shift([1, 2, 3, 4, 5], 2);
+    i = 0;
+    j = nums.length - 1;
+    while (i < j) {
+        let temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+        i++;
+        j--;
+    }
+
+    return nums
+
+
+};
+
+
+console.log(rotate([1, 2, 3, 4, 5, 6, 7], 3))

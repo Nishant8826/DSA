@@ -1,7 +1,7 @@
 // Given a sorted array, remove duplicates
-//                     i
-let arr = [1, 1,2];
-//            j
+//                              i
+let arr = [1, 2, 3, 4, 5, 6, 1, 4,];
+//                        j
 
 
 function remove(arr) {
@@ -19,6 +19,7 @@ function remove(arr) {
     for (let i = 0; i <= j; i++) {
         newArr.push(arr[i]);
     }
+    console.log(arr);
 }
 
 
