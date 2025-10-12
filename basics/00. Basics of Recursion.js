@@ -123,16 +123,17 @@ function Subsequence(ind, ds, arr, n) {
         console.log(ds);
         return;
     }
+    
     //take
     ds.push(arr[ind])
     Subsequence(ind + 1, ds, arr, n);
-
-    // not take
     ds.pop();
+    // not take
     Subsequence(ind + 1, ds, arr, n);
+
 }
 
-let arr = [3, 1, 2];
+let arr = [1, 2, 3];
 let n = arr.length;
 let ds = [];
 Subsequence(0, ds, arr, n);
