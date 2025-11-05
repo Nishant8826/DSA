@@ -1,37 +1,51 @@
+/**
+ * -19, 8, 2, -8, 19, 5, -2, -23
+ *                            i
+ * 
+ * sum = -2
+ * 
+ * map ={
+ *  -19 : 0,
+ *  8 : 1,
+ *  2 : 2,
+ *  -8 : 3,
+ *  19 : 4,
+ *  5 : 5,
+ *  -2:6,
+ *  
+ * }
+ * 
+ * max = 
+ * 
+ * sub = []
+ */
+
+
+
 function longestSubArraySumZero(arr) {
     let map = new Map();
-    let maxLen = 0;
-    let start = -1, end = -1;
     let sum = 0;
-
+    let sub = [];
     for (let i = 0; i < arr.length; i++) {
         sum += arr[i];
-
-        // Case 1: subarray [0...i] has sum = 0
-        if (sum === 0) {
-            if (i + 1 > maxLen) {
-                maxLen = i + 1;
-                start = 0;
-                end = i;
+        if (sum == 0) {
+            sub = arr.slice(0, i + 1)
+        } else if (map.has(sum)) {
+            let start = map.get(sum) + 1;
+            if ((i - start + 1) > sub.length) {
+                sub = arr.slice(start, i + 1);
             }
         }
 
-        // Case 2: same prefix sum seen before
-        if (map.has(sum)) {
-            let prevIndex = map.get(sum);
-            let len = i - prevIndex;
-            if (len > maxLen) {
-                maxLen = len;
-                start = prevIndex + 1;
-                end = i;
-            }
-        } else {
-            // Store first occurrence of this sum
+        if (!map.has(sum)) {
             map.set(sum, i);
         }
     }
-
-    return start !== -1 ? arr.slice(start, end + 1) : [];
+    return sub;
 }
 
 console.log(longestSubArraySumZero([1, 2, -2, 4, -4]));
+console.log(longestSubArraySumZero([1, -1, 3, 2, -2, -8, 1, 7, 10, 2, 3]));
+console.log(longestSubArraySumZero([1, 2, -3, 3]))
+console.log(longestSubArraySumZero([-19, 8, 2, -8, 19, 5, -2, -23]))
+// console.log(longestSubArraySumZero())
